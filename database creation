@@ -1,0 +1,103 @@
+---Creating the Database---
+
+CREATE TABLE COFFEE_SHOP(                                                                                                
+  shop_id INT,
+  shop_name VARCHAR(50),
+  city VARCHAR(50),
+  state CHAR(2),
+  PRIMARY KEY (shop_id)
+  );
+
+CREATE TABLE EMPLOYEE(
+  employee_id INT,
+  first_name VARCHAR(30),
+  last_name VARCHAR(30),
+  hire_date DATE,
+  job_title VARCHAR(30),
+  shop_id INT,
+  PRIMARY KEY (employee_id),
+  FOREIGN KEY (shop_id) REFERENCES COFFEE_SHOP(shop_id)
+  );
+
+CREATE TABLE SUPPLIER(
+  supplier_id INT,
+  company_name VARCHAR(50),   
+  country VARCHAR(30),
+  sales_contact_name VARCHAR(60),
+  email VARCHAR(50) NOT NULL,
+  PRIMARY KEY (supplier_id)
+  );
+
+CREATE TABLE COFFEE(
+  coffee_id INT,
+  shop_id INT,
+  supplier_id INT,
+  coffee_name VARCHAR(30),
+  price_per_pound NUMERIC(5,2),
+  PRIMARY KEY (coffee_id),
+  FOREIGN KEY (shop_id) REFERENCES     COFFEE_SHOP(shop_id),
+  FOREIGN KEY(supplier_id) REFERENCES SUPPLIER (supplier_id)
+);
+
+---populating tables
+
+INSERT INTO COFFEE_SHOP
+VALUES (01,'Waynes Coffee Emporium', 'Atlanta', 'GA'),
+       (02,'Morning Brew', 'Seattle', 'WA'),
+       (03,'Wake Up Cafe', 'Memphis', 'TN')
+;
+
+INSERT INTO EMPLOYEE
+VALUES (001, 'Peter', 'Parker', '2002-04-29', 'cashier', 02),
+       (002, 'Bucky', 'Barnes', '2011-07-19', 'barista', 02),
+       (003, 'Bruce','Banner', '2003-06-20', 'manager', 01)
+;
+
+INSERT INTO SUPPLIER
+VALUES (1, 'Folgers', 'United Sates', 'Jessica Bateman', 'jessica.bateman@gmail.com'),
+       (2, 'Cafe De Columbia', 'Columbia', 'Bill Faningham', 'Bfaningham@cafecolumbia.org'),
+       (3, 'Keurig', 'United States', 'Brooke Johnson', 'Brooke.Johnson91@outlook.coom')
+;       
+
+INSERT INTO COFFEE
+VALUES (1, 03, 2, 'Mezcla', 20.00),
+       (2, 01, 1, 'Smooth Blend', 12.00),
+       (3, 01, 1, 'Black Brew', 17.00)
+;
+
+---Creating a View 
+
+CREATE VIEW EMPLOYEE_FULLNAME
+AS SELECT employee_id, CONCAT(first_name,' ',last_name) AS full_name, hire_date, job_title, shop_id
+FROM EMPLOYEE
+;
+
+---Creating an index 
+
+CREATE INDEX coffee_index
+ON COFFEE(coffee_name)
+;
+
+SELECT *
+FROM EMPLOYEE
+WHERE job_title = 'cashier'
+;
+
+---Query to Perform Table Joins
+
+SELECT A.shop_id, A.shop_name, A.city, A.state, B.coffee_id, B.coffee_name, B.price_per_pound, C.supplier_id, C.company_name, C.country, C.sales_contact_name, C.email
+FROM COFFEE_SHOP A
+INNER JOIN COFFEE B 
+ON A.shop_id = B.shop_id
+INNER JOIN SUPPLIER C
+ON C.supplier_id = B.supplier_id
+;
+
+
+
+
+
+
+
+
+
