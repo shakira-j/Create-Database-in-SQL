@@ -85,7 +85,7 @@ SELECT *
 FROM COFFEE
 WHERE coffee_name = 'Smooth Blend'
 ; 
----Select staement to demonstrate faster query time.
+---Select statement to demonstrate faster query time.
 
 --------------------------------------------------------------Query to Perform Table Joins--------------------------------------------------------------------
 
