@@ -1,4 +1,4 @@
----Creating the Database---
+-----------------------------------------------------------------Creating the Database-----------------------------------------------------------------------
 
 CREATE DATABASE COFFEE_DB;
 
@@ -42,7 +42,7 @@ CREATE TABLE COFFEE(
   FOREIGN KEY(supplier_id) REFERENCES SUPPLIER (supplier_id)
 );
 
----populating tables
+------------------------------------------------------------Populating Table in the Database-------------------------------------------------------------
 
 INSERT INTO COFFEE_SHOP
 VALUES (01,'Waynes Coffee Emporium', 'Atlanta', 'GA'),
@@ -68,7 +68,7 @@ VALUES (1, 03, 2, 'Mezcla', 20.00),
        (3, 01, 1, 'Black Brew', 17.00)
 ;
 
----Creating a View 
+--------------------------------------------------------------------Creating a View--------------------------------------------------------------------------- 
 
 CREATE VIEW EMPLOYEE_FULLNAME
 AS SELECT employee_id, CONCAT(first_name,' ',last_name) AS full_name, hire_date, job_title, shop_id
@@ -86,7 +86,7 @@ FROM EMPLOYEE
 WHERE job_title = 'cashier'
 ;
 
----Query to Perform Table Joins
+--------------------------------------------------------------Query to Perform Table Joins--------------------------------------------------------------------
 
 SELECT A.shop_id, A.shop_name, A.city, A.state, B.coffee_id, B.coffee_name, B.price_per_pound, C.supplier_id, C.company_name, C.country, C.sales_contact_name, C.email
 FROM COFFEE_SHOP A
