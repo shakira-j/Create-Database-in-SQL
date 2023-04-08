@@ -75,16 +75,17 @@ AS SELECT employee_id, CONCAT(first_name,' ',last_name) AS full_name, hire_date,
 FROM EMPLOYEE
 ;
 
----Creating an index 
+---------------------------------------------------------Creating an Index to Decrease Query Time--------------------------------------------------------------------
 
 CREATE INDEX coffee_index
 ON COFFEE(coffee_name)
 ;
 
 SELECT *
-FROM EMPLOYEE
-WHERE job_title = 'cashier'
-;
+FROM COFFEE
+WHERE coffee_name = 'Smooth Blend'
+; 
+---Select staement to demonstrate faster query time.
 
 --------------------------------------------------------------Query to Perform Table Joins--------------------------------------------------------------------
 
