@@ -1,5 +1,8 @@
 ---Creating the Database---
 
+CREATE DATABASE COFFEE_DB;
+
+
 CREATE TABLE COFFEE_SHOP(                                                                                                
   shop_id INT,
   shop_name VARCHAR(50),
