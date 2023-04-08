@@ -57,7 +57,7 @@ VALUES (001, 'Peter', 'Parker', '2002-04-29', 'cashier', 02),
 ;
 
 INSERT INTO SUPPLIER
-VALUES (1, 'Folgers', 'United Sates', 'Jessica Bateman', 'jessica.bateman@gmail.com'),
+VALUES (1, 'Folgers', 'United Sates', 'Jessica Bateman', 'Jessica.bateman@gmail.com'),
        (2, 'Cafe De Columbia', 'Columbia', 'Bill Faningham', 'Bfaningham@cafecolumbia.org'),
        (3, 'Keurig', 'United States', 'Brooke Johnson', 'Brooke.Johnson91@outlook.coom')
 ;       
